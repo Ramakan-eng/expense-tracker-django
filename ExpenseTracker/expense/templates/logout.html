@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Logout - Expense Tracker {% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4 text-center" style="width:350px;">
+    <h4 class="text-primary mb-3">Are you sure you want to logout?</h4>
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger w-100 mb-2">Logout</button>
+    </form>
+
+    <a href="{% url 'expense_list' %}" class="btn btn-secondary w-100">Cancel</a>
+  </div>
+</div>
+{% endblock %}

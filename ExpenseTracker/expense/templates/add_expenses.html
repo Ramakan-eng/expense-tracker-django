@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Expense - Expense Tracker {% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4" style="width:400px;">
+    <h3 class="text-primary text-center mb-3">Add New Expense</h3>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+   <form method="post" action="{% url 'add_expense' %}">
+
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" placeholder="Expense title" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Amount (₹)</label>
+        <input type="number" name="amount" class="form-control" placeholder="Enter amount" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <input type="text" name="category" class="form-control" placeholder="e.g. Food, Travel, Shopping" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Date</label>
+        <input type="date" name="date" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Save Expense</button>
+    </form>
+
+    <p class="text-center mt-3">
+      <a href="{% url 'expense_list' %}"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

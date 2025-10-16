@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- main contain start-->
+ <div class="container text-center mt-5">
+    <h1 class = 'display-4'>Welcome to Expende Tracker app </h1>
+    <p class = 'lead'><h4>You can track you spendature by using this app</h4></p>
+
+
+{% if user.is_authenticated %}
+<a href="{% url 'signup' %}" class = "btn btn-success btn-lg me-2">Signup</a>
+<a href="{% url 'login' %}" class = "btn btn-primary btn-lg"> login</a>
+
+</div>
+{% else %}
+
+{% endif %}
+
+<!-- Footer(only on Home page)-->
+
+<footer class = 'text-center mt-5 pt-5'>
+    Designed and Developed by RK 
+</footer>
+{% endblock %}
+
+<!--Main contain end-->
